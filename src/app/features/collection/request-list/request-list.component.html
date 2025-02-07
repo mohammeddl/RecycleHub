@@ -1,79 +1,95 @@
 <div class="container mx-auto px-4 py-8">
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Collection Requests</h2>
-        <a 
-          routerLink="/dashboard/create-request" 
-          class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-          *ngIf="currentUser.role !== 'collector'">
-          Create New Request
-        </a>
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">Collection Requests</h2>
+      <a
+        routerLink="/dashboard/create-request"
+        class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+        *ngIf="currentUser.role !== 'collector'"
+      >
+        Create New Request
+      </a>
+    </div>
+
+    <!-- Requests List -->
+    <div class="space-y-4">
+      <div
+        *ngFor="let request of requests"
+        class="border rounded-lg p-4 hover:shadow-md transition-shadow"
+      >
+        <div class="flex justify-between items-start">
+          <div class="space-y-2">
+            <div class="flex items-center space-x-2">
+              <span class="font-semibold">Waste Type:</span>
+              <span class="text-gray-700">{{ request.wasteType }}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="font-semibold">Quantity:</span>
+              <span class="text-gray-700">{{ request.quantity }} kg</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="font-semibold">Pickup Date:</span>
+              <span class="text-gray-700">{{ request.pickupDate | date }}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="font-semibold">Address:</span>
+              <span class="text-gray-700">{{ request.pickupAddress }}</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-end space-y-2">
+            <span
+              [class]="
+                'px-3 py-1 rounded-full text-sm font-medium ' +
+                getStatusColor(request.status)
+              "
+            >
+              {{ request.status | titlecase }}
+            </span>
+
+            <!-- Action Buttons -->
+            <div
+              class="flex space-x-2"
+              *ngIf="
+                currentUser.role === 'collector' && request.status === 'pending'
+              "
+            >
+              <button
+                (click)="updateStatus(request.id!, 'accepted')"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Accept
+              </button>
+            </div>
+
+            <div class="flex space-x-2" *ngIf="request.status === 'accepted'">
+              <button
+                (click)="updateStatus(request.id!, 'completed')"
+                class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              >
+                Complete
+              </button>
+              <button
+                (click)="updateStatus(request.id!, 'rejected')"
+                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Reject
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description if available -->
+        <div *ngIf="request.description" class="mt-4">
+          <span class="font-semibold">Description:</span>
+          <p class="text-gray-700 mt-1">{{ request.description }}</p>
+        </div>
       </div>
-  
-      <!-- Requests List -->
-      <div class="space-y-4">
-        <div *ngFor="let request of requests" 
-             class="border rounded-lg p-4 hover:shadow-md transition-shadow">
-          <div class="flex justify-between items-start">
-            <div class="space-y-2">
-              <div class="flex items-center space-x-2">
-                <span class="font-semibold">Waste Type:</span>
-                <span class="text-gray-700">{{request.wasteType}}</span>
-              </div>
-              <div class="flex items-center space-x-2">
-                <span class="font-semibold">Quantity:</span>
-                <span class="text-gray-700">{{request.quantity}} kg</span>
-              </div>
-              <div class="flex items-center space-x-2">
-                <span class="font-semibold">Pickup Date:</span>
-                <span class="text-gray-700">{{request.pickupDate | date}}</span>
-              </div>
-              <div class="flex items-center space-x-2">
-                <span class="font-semibold">Address:</span>
-                <span class="text-gray-700">{{request.pickupAddress}}</span>
-              </div>
-            </div>
-            
-            <div class="flex flex-col items-end space-y-2">
-              <span [class]="'px-3 py-1 rounded-full text-sm font-medium ' + getStatusColor(request.status)">
-                {{request.status | titlecase}}
-              </span>
-              
-              <!-- Action Buttons -->
-              <div class="flex space-x-2" *ngIf="currentUser.role === 'collector' && request.status === 'pending'">
-                <button 
-                  (click)="updateStatus(request.id!, 'accepted')"
-                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                  Accept
-                </button>
-              </div>
-              
-              <div class="flex space-x-2" *ngIf="request.status === 'accepted'">
-                <button 
-                  (click)="updateStatus(request.id!, 'completed')"
-                  class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                  Complete
-                </button>
-                <button 
-                  (click)="updateStatus(request.id!, 'cancelled')"
-                  class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Description if available -->
-          <div *ngIf="request.description" class="mt-4">
-            <span class="font-semibold">Description:</span>
-            <p class="text-gray-700 mt-1">{{request.description}}</p>
-          </div>
-        </div>
-  
-        <!-- Empty state -->
-        <div *ngIf="requests.length === 0" class="text-center py-8">
-          <p class="text-gray-500">No collection requests found.</p>
-        </div>
+
+      <!-- Empty state -->
+      <div *ngIf="requests.length === 0" class="text-center py-8">
+        <p class="text-gray-500">No collection requests found.</p>
       </div>
     </div>
   </div>
+</div>

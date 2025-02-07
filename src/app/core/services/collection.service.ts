@@ -30,6 +30,21 @@ export class CollectionService {
     return this.getAllRequests().filter(request => request.collectorId === collectorId);
   }
 
+  // Get requests by city for collectors
+  getRequestsByCity(city: string): CollectionRequest[] {
+    return this.getAllRequests().filter(request => 
+      request.status === 'pending' && 
+      request.pickupAddress.toLowerCase().includes(city.toLowerCase())
+    );
+  }
+
+  // Get a single request by ID
+  getRequestById(requestId: string): CollectionRequest | null {
+    const requests = this.getAllRequests();
+    return requests.find(r => r.id === requestId) || null;
+  }
+
+  // Update request status with optional collector ID
   updateRequestStatus(requestId: string, status: CollectionRequest['status'], collectorId?: string): void {
     const requests = this.getAllRequests();
     const index = requests.findIndex(r => r.id === requestId);
@@ -38,6 +53,75 @@ export class CollectionService {
       if (collectorId) {
         requests[index].collectorId = collectorId;
       }
+      localStorage.setItem(this.REQUESTS_KEY, JSON.stringify(requests));
+    }
+  }
+
+  // Complete a collection with actual quantity and notes
+  completeCollection(
+    requestId: string, 
+    actualQuantity: number, 
+    collectionNotes?: string
+  ): void {
+    const requests = this.getAllRequests();
+    const index = requests.findIndex(r => r.id === requestId);
+    if (index !== -1) {
+      requests[index].status = 'completed';
+      requests[index].actualQuantity = actualQuantity;
+      requests[index].collectionNotes = collectionNotes;
+      localStorage.setItem(this.REQUESTS_KEY, JSON.stringify(requests));
+    }
+  }
+
+  // Reject a collection with reason
+  rejectCollection(requestId: string, rejectionReason: string): void {
+    const requests = this.getAllRequests();
+    const index = requests.findIndex(r => r.id === requestId);
+    if (index !== -1) {
+      requests[index].status = 'rejected';
+      requests[index].rejectionReason = rejectionReason;
+      localStorage.setItem(this.REQUESTS_KEY, JSON.stringify(requests));
+    }
+  }
+
+  // Start collection (change status to in_progress)
+  startCollection(requestId: string): void {
+    this.updateRequestStatus(requestId, 'in_progress');
+  }
+
+  // Add photos to a collection request
+  addPhotos(requestId: string, photos: string[]): void {
+    const requests = this.getAllRequests();
+    const index = requests.findIndex(r => r.id === requestId);
+    if (index !== -1) {
+      requests[index].photos = requests[index].photos || [];
+      requests[index].photos.push(...photos);
+      localStorage.setItem(this.REQUESTS_KEY, JSON.stringify(requests));
+    }
+  }
+
+  // Get pending requests count for a specific city
+  getPendingRequestsCount(city: string): number {
+    return this.getRequestsByCity(city).length;
+  }
+
+  // Get all requests for a specific status
+  getRequestsByStatus(status: CollectionRequest['status']): CollectionRequest[] {
+    return this.getAllRequests().filter(request => request.status === status);
+  }
+
+  // Delete a request (if needed)
+  deleteRequest(requestId: string): void {
+    const requests = this.getAllRequests().filter(r => r.id !== requestId);
+    localStorage.setItem(this.REQUESTS_KEY, JSON.stringify(requests));
+  }
+
+  // Update request details (for editing requests)
+  updateRequest(requestId: string, updates: Partial<CollectionRequest>): void {
+    const requests = this.getAllRequests();
+    const index = requests.findIndex(r => r.id === requestId);
+    if (index !== -1) {
+      requests[index] = { ...requests[index], ...updates };
       localStorage.setItem(this.REQUESTS_KEY, JSON.stringify(requests));
     }
   }

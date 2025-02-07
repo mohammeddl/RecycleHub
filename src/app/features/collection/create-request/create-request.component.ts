@@ -28,19 +28,17 @@ export class CreateRequestComponent {
   onSubmit() {
     if (this.requestForm.valid) {
       const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-      const formValues = this.requestForm.value;
-      
       const request: CollectionRequest = {
-        wasteType: formValues.wasteType!,
-        quantity: formValues.quantity!,
-        pickupAddress: formValues.pickupAddress!,
-        pickupDate: formValues.pickupDate!,
-        description: formValues.description || '',
+        wasteType: this.requestForm.value.wasteType!,
+        quantity: this.requestForm.value.quantity!,
+        pickupAddress: this.requestForm.value.pickupAddress!,
+        pickupDate: this.requestForm.value.pickupDate!,
+        description: this.requestForm.value.description || '',
         userId: currentUser.id,
+        city: currentUser.address.split(',')[0].trim(), 
         status: 'pending' as const,
         createdAt: new Date().toISOString()
       };
-      
       this.collectionService.createRequest(request);
       this.router.navigate(['/dashboard/requests']);
     }

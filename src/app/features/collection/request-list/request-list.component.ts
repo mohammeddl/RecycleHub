@@ -24,8 +24,11 @@ export class RequestListComponent implements OnInit {
   }
 
   updateStatus(requestId: string, status: CollectionRequest['status']) {
-    this.collectionService.updateRequestStatus(requestId, status, 
-      this.currentUser.role === 'collector' ? this.currentUser.id : undefined);
+    this.collectionService.updateRequestStatus(
+      requestId, 
+      status,
+      this.currentUser.role === 'collector' ? this.currentUser.id : undefined
+    );
     // Refresh the list
     this.ngOnInit();
   }

@@ -6,6 +6,9 @@ import { ProfileComponent } from './features/auth/dashboard/profile/profile.comp
 import { authGuard } from './core/guards/auth.guard';
 import { CreateRequestComponent } from './features/collection/create-request/create-request.component';
 import { RequestListComponent } from './features/collection/request-list/request-list.component';
+import { AvailableRequestsComponent } from './features/collection/available-requests/available-requests.component';
+import { MyCollectionsComponent } from './features/collection/my-collections/my-collections.component';
+import { ManageCollectionComponent } from './features/collection/manage-collection/manage-collection.component';
 
 
 export const routes: Routes = [
@@ -18,17 +21,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'profile', component: ProfileComponent },
-      { path: '', redirectTo: 'profile', pathMatch: 'full' }
-    ]
-  },{ 
-    path: 'dashboard', 
-    component: DashboardComponent,
-    canActivate: [authGuard],
-    children: [
-      { path: 'profile', component: ProfileComponent },
       { path: 'create-request', component: CreateRequestComponent },
-      { path: 'requests', component: RequestListComponent },
+      { path: 'available-requests', component: RequestListComponent },
+      { path: 'my-collections', component: MyCollectionsComponent },
+      { path: 'manage-collection/:id', component: ManageCollectionComponent },
       { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ]
-  },
+  }
 ];
