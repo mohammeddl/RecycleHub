@@ -1,0 +1,84 @@
+<div
+  class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+>
+  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Create your account
+      </h2>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+      <div class="rounded-md space-y-4">
+        <div>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="Email address"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <input
+            formControlName="firstName"
+            type="text"
+            placeholder="First Name"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+          <input
+            formControlName="lastName"
+            type="text"
+            placeholder="Last Name"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="address"
+            type="text"
+            placeholder="Complete Address"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="phone"
+            type="tel"
+            placeholder="Phone Number"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="birthDate"
+            type="date"
+            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+      >
+        Register
+      </button>
+
+      <div class="text-sm text-center">
+        <a
+          routerLink="/login"
+          class="font-medium text-green-600 hover:text-green-500"
+        >
+          Already have an account? Sign in
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

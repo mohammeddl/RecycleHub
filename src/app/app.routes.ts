@@ -9,6 +9,7 @@ import { RequestListComponent } from './features/collection/request-list/request
 import { AvailableRequestsComponent } from './features/collection/available-requests/available-requests.component';
 import { MyCollectionsComponent } from './features/collection/my-collections/my-collections.component';
 import { ManageCollectionComponent } from './features/collection/manage-collection/manage-collection.component';
+import { PointsDashboardComponent } from './features/points/points-dashboard.component';
 
 
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
       { path: 'manage-collection/:id', component: ManageCollectionComponent },
       { path: 'requests', component: RequestListComponent },
       { path: 'edit-request/:id', component: CreateRequestComponent },
+      { path: 'points', component: PointsDashboardComponent },
       { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ]
   }
