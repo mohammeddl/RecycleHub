@@ -22,9 +22,11 @@ export const routes: Routes = [
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'create-request', component: CreateRequestComponent },
-      { path: 'available-requests', component: RequestListComponent },
+      { path: 'available-requests', component: AvailableRequestsComponent },
       { path: 'my-collections', component: MyCollectionsComponent },
       { path: 'manage-collection/:id', component: ManageCollectionComponent },
+      { path: 'requests', component: RequestListComponent },
+      { path: 'edit-request/:id', component: CreateRequestComponent },
       { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ]
   }

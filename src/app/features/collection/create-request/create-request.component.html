@@ -1,83 +1,105 @@
 <div class="container mx-auto px-4 py-8 max-w-2xl">
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Create Collection Request</h2>
-      
-      <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="space-y-6">
-        <!-- Waste Type -->
-        <div class="form-group">
-          <label for="wasteType" class="block text-sm font-medium text-gray-700 mb-2">
-            Waste Type
-          </label>
-          <select 
-            id="wasteType" 
-            formControlName="wasteType"
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
-            <option value="">Select waste type</option>
-            <option value="plastic">Plastic</option>
-            <option value="paper">Paper</option>
-            <option value="glass">Glass</option>
-            <option value="metal">Metal</option>
-            <option value="electronic">Electronic</option>
-          </select>
-        </div>
-  
-        <!-- Quantity -->
-        <div class="form-group">
-          <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">
-            Quantity (kg)
-          </label>
-          <input 
-            type="number" 
-            id="quantity" 
-            formControlName="quantity"
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
-        </div>
-  
-        <!-- Pickup Address -->
-        <div class="form-group">
-          <label for="pickupAddress" class="block text-sm font-medium text-gray-700 mb-2">
-            Pickup Address
-          </label>
-          <textarea 
-            id="pickupAddress" 
-            formControlName="pickupAddress"
-            rows="3"
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
-        </div>
-  
-        <!-- Pickup Date -->
-        <div class="form-group">
-          <label for="pickupDate" class="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Pickup Date
-          </label>
-          <input 
-            type="date" 
-            id="pickupDate" 
-            formControlName="pickupDate"
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
-        </div>
-  
-        <!-- Description -->
-        <div class="form-group">
-          <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
-            Additional Description
-          </label>
-          <textarea 
-            id="description" 
-            formControlName="description"
-            rows="4"
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
-        </div>
-  
-        <!-- Submit Button -->
-        <div class="flex justify-end">
-          <button 
-            type="submit"
-            [disabled]="!requestForm.valid"
-            class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-            Create Request
-          </button>
-        </div>
-      </form>
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">
+      {{ isEditing ? 'Edit Collection Request' : 'Create Collection Request' }}
+    </h2>
+
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- Waste Type -->
+      <div class="form-group">
+        <label
+          for="wasteType"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Waste Type
+        </label>
+        <select
+          id="wasteType"
+          formControlName="wasteType"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+        >
+          <option value="">Select waste type</option>
+          <option value="plastic">Plastic</option>
+          <option value="paper">Paper</option>
+          <option value="glass">Glass</option>
+          <option value="metal">Metal</option>
+          <option value="electronic">Electronic</option>
+        </select>
+      </div>
+
+      <!-- Quantity -->
+      <div class="form-group">
+        <label
+          for="quantity"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Quantity (kg)
+        </label>
+        <input
+          type="number"
+          id="quantity"
+          formControlName="quantity"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+        />
+      </div>
+
+      <!-- Pickup Address -->
+      <div class="form-group">
+        <label
+          for="pickupAddress"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Pickup Address
+        </label>
+        <textarea
+          id="pickupAddress"
+          formControlName="pickupAddress"
+          rows="3"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+        ></textarea>
+      </div>
+
+      <!-- Pickup Date -->
+      <div class="form-group">
+        <label
+          for="pickupDate"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Preferred Pickup Date
+        </label>
+        <input
+          type="date"
+          id="pickupDate"
+          formControlName="pickupDate"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+        />
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label
+          for="description"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Additional Description
+        </label>
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="4"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex justify-end">
+      <button 
+        type="submit"
+        [disabled]="!requestForm.valid"
+        class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+        {{ isEditing ? 'Update Request' : 'Create Request' }}
+      </button>
     </div>
+    </form>
   </div>
+</div>
