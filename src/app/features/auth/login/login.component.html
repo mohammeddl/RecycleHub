@@ -1,0 +1,71 @@
+<div
+      class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center"
+    >
+      <div
+        class="max-w-md w-full m-4 space-y-8 bg-white p-8 rounded-xl shadow-lg"
+      >
+        <div>
+          <h1 class="text-center text-3xl font-bold text-gray-900">
+            Welcome Back
+          </h1>
+          <p class="mt-2 text-center text-sm text-gray-600">
+            Sign in to your RecycleHub account
+          </p>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+          <div class="space-y-4">
+            <div>
+              <label class="sr-only">Email</label>
+              <input
+                formControlName="email"
+                type="email"
+                class="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                placeholder="Email address"
+              />
+              <div
+                *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Email is required
+              </div>
+            </div>
+
+            <div>
+              <label class="sr-only">Password</label>
+              <input
+                formControlName="password"
+                type="password"
+                class="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                placeholder="Password"
+              />
+              <div
+                *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']"
+                class="text-red-500 text-sm mt-1"
+              >
+                Password is required
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              [disabled]="!form.valid"
+              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
+            >
+              Sign in
+            </button>
+          </div>
+
+          <div class="text-sm text-center">
+            <a
+              routerLink="/register"
+              class="font-medium text-green-600 hover:text-green-500"
+            >
+              Don't have an account? Register
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
