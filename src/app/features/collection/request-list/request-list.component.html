@@ -1,94 +1,252 @@
-<div class="container mx-auto px-4 py-8">
-  <div class="bg-white rounded-lg shadow-lg p-6">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold text-gray-800">Collection Requests</h2>
-      <a
-        routerLink="/dashboard/create-request"
-        class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-        *ngIf="currentUser.role !== 'collector'"
-      >
-        Create New Request
-      </a>
+<div class="h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
+  <div
+    class="h-full bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl flex flex-col overflow-hidden"
+  >
+    <div class="p-6 border-b bg-white/80 sticky top-0 z-10">
+      <div class="flex justify-between items-center">
+        <h2
+          class="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent"
+        >
+          My Requests
+        </h2>
+        <a
+          routerLink="/dashboard/create-request"
+          class="group px-6 py-2.5 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl font-medium hover:from-green-600 hover:to-blue-600 transform hover:-translate-y-0.5 transition-all duration-200 shadow-sm hover:shadow-md"
+        >
+          <span class="flex items-center">
+            <svg
+              class="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            Create Request
+          </span>
+        </a>
+      </div>
     </div>
 
-    <!-- Requests List -->
-    <div class="space-y-4">
-      <div
-        *ngFor="let request of requests"
-        class="border rounded-lg p-4 hover:shadow-md transition-shadow"
-      >
-        <div class="flex justify-between items-start">
-          <div class="space-y-2">
-            <div class="flex items-center space-x-2">
-              <span class="font-semibold">Waste Type:</span>
-              <span class="text-gray-700">{{ request.wasteType }}</span>
+    <div class="flex-1 overflow-y-auto p-6">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          *ngFor="let request of requests"
+          class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <div
+            class="absolute -top-2 right-4 px-4 py-1 rounded-full text-sm font-medium shadow-sm transform transition-transform group-hover:scale-110"
+            [ngClass]="{
+              'bg-yellow-100 text-yellow-800': request.status === 'pending',
+              'bg-blue-100 text-blue-800': request.status === 'accepted',
+              'bg-green-100 text-green-800': request.status === 'completed',
+              'bg-red-100 text-red-800': request.status === 'rejected',
+              'bg-purple-100 text-purple-800': request.status === 'in_progress'
+            }"
+          >
+            {{ request.status | titlecase }}
+          </div>
+
+          <div class="p-6">
+            <div class="text-xs text-gray-500 mb-4">
+              {{ request.createdAt | date }}
             </div>
-            <div class="flex items-center space-x-2">
-              <span class="font-semibold">Quantity:</span>
-              <span class="text-gray-700">{{ request.quantity }} kg</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="font-semibold">Pickup Date:</span>
-              <span class="text-gray-700">{{ request.pickupDate | date }}</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span class="font-semibold">Address:</span>
-              <span class="text-gray-700">{{ request.pickupAddress }}</span>
+
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <div
+                  class="flex-1 p-4 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl"
+                >
+                  <span class="block text-xs font-medium text-gray-500 mb-1"
+                    >Waste Type</span
+                  >
+                  <p class="text-sm font-semibold text-gray-900">
+                    <span [ngSwitch]="request.wasteType">
+                      <span *ngSwitchCase="'plastic'">♻️ </span>
+                      <span *ngSwitchCase="'paper'">📄 </span>
+                      <span *ngSwitchCase="'glass'">🥃 </span>
+                      <span *ngSwitchCase="'metal'">🔧 </span>
+                      <span *ngSwitchCase="'electronic'">💻 </span>
+                    </span>
+                    {{ request.wasteType }}
+                  </p>
+                </div>
+                <div
+                  class="flex-1 p-4 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl"
+                >
+                  <span class="block text-xs font-medium text-gray-500 mb-1"
+                    >Quantity</span
+                  >
+                  <p class="text-sm font-semibold text-gray-900">
+                    {{ request.quantity }} kg
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="flex items-start space-x-2">
+                  <svg
+                    class="w-4 h-4 text-gray-400 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <div>
+                    <span class="block text-xs font-medium text-gray-500"
+                      >Pickup Date</span
+                    >
+                    <p class="text-sm text-gray-900">
+                      {{ request.pickupDate | date }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-2">
+                  <svg
+                    class="w-4 h-4 text-gray-400 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <div>
+                    <span class="block text-xs font-medium text-gray-500"
+                      >Address</span
+                    >
+                    <p class="text-sm text-gray-900">
+                      {{ request.pickupAddress }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                *ngIf="request.description || request.actualQuantity"
+                class="border-t pt-4 mt-4 space-y-3"
+              >
+                <div *ngIf="request.description" class="text-sm">
+                  <span class="block text-xs font-medium text-gray-500 mb-1"
+                    >Notes</span
+                  >
+                  <p class="text-gray-600 line-clamp-2">
+                    {{ request.description }}
+                  </p>
+                </div>
+
+                <div
+                  *ngIf="request.actualQuantity"
+                  class="flex items-center justify-between bg-green-50 p-3 rounded-lg"
+                >
+                  <span class="text-xs font-medium text-gray-600"
+                    >Actual Quantity</span
+                  >
+                  <span class="text-sm font-semibold text-green-600"
+                    >{{ request.actualQuantity }} kg</span
+                  >
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flex flex-col items-end space-y-2">
-            <span
-              [class]="
-                'px-3 py-1 rounded-full text-sm font-medium ' +
-                getStatusColor(request.status)
-              "
-            >
-              {{ request.status | titlecase }}
-            </span>
-
-            <!-- Action Buttons -->
-            <div
-              class="flex space-x-2"
-              *ngIf="
-                currentUser.role === 'collector' && request.status === 'pending'
-              "
-            >
+          <div
+            *ngIf="request.status === 'pending'"
+            class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          >
+            <div class="flex space-x-2">
               <button
-                (click)="updateStatus(request.id!, 'accepted')"
-                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                (click)="editRequest(request.id!)"
+                class="p-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition-colors"
               >
-                Accept
-              </button>
-            </div>
-
-            <div class="flex space-x-2" *ngIf="request.status === 'accepted'">
-              <button
-                (click)="updateStatus(request.id!, 'completed')"
-                class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-              >
-                Complete
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  />
+                </svg>
               </button>
               <button
-                (click)="updateStatus(request.id!, 'rejected')"
-                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                (click)="deleteRequest(request.id!)"
+                class="p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors"
               >
-                Reject
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
               </button>
             </div>
           </div>
-        </div>
-
-        <!-- Description if available -->
-        <div *ngIf="request.description" class="mt-4">
-          <span class="font-semibold">Description:</span>
-          <p class="text-gray-700 mt-1">{{ request.description }}</p>
         </div>
       </div>
 
-      <!-- Empty state -->
-      <div *ngIf="requests.length === 0" class="text-center py-8">
-        <p class="text-gray-500">No collection requests found.</p>
+      <div
+        *ngIf="requests.length === 0"
+        class="flex flex-col items-center justify-center py-12 px-4"
+      >
+        <div class="bg-gray-50 rounded-full p-6 mb-4">
+          <svg
+            class="w-12 h-12 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1"
+              d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900">No requests found</h3>
+        <p class="mt-1 text-sm text-gray-500">
+          Create a new request to get started
+        </p>
+        <a
+          routerLink="/dashboard/create-request"
+          class="mt-4 px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-200"
+        >
+          Create Your First Request
+        </a>
       </div>
     </div>
   </div>

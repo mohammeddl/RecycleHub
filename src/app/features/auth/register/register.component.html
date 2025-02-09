@@ -1,81 +1,60 @@
-<div
-  class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
->
-  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+<div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl transform hover:scale-[1.01] transition-transform duration-300">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
         Create your account
       </h2>
     </div>
+    
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
-      <div class="rounded-md space-y-4">
-        <div>
-          <input
-            formControlName="email"
-            type="email"
-            placeholder="Email address"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
-        </div>
-        <div>
-          <input
-            formControlName="password"
-            type="password"
-            placeholder="Password"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
-        </div>
+      <div class="space-y-5">
+        <input formControlName="email"
+               type="email"
+               placeholder="Email address"
+               class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
+
+        <input formControlName="password"
+               type="password"
+               placeholder="Password"
+               class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
+
         <div class="grid grid-cols-2 gap-4">
-          <input
-            formControlName="firstName"
-            type="text"
-            placeholder="First Name"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
-          <input
-            formControlName="lastName"
-            type="text"
-            placeholder="Last Name"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
+          <input formControlName="firstName"
+                 type="text"
+                 placeholder="First Name"
+                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
+          <input formControlName="lastName"
+                 type="text"
+                 placeholder="Last Name"
+                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
         </div>
-        <div>
-          <input
-            formControlName="address"
-            type="text"
-            placeholder="Complete Address"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
-        </div>
-        <div>
-          <input
-            formControlName="phone"
-            type="tel"
-            placeholder="Phone Number"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
-        </div>
-        <div>
-          <input
-            formControlName="birthDate"
-            type="date"
-            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
-          />
+
+        <input formControlName="address"
+               type="text"
+               placeholder="Complete Address"
+               class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
+
+        <input formControlName="phone"
+               type="tel"
+               placeholder="Phone Number"
+               class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
+
+        <div class="relative">
+          <label class="block text-sm text-gray-600 mb-2">Birth Date</label>
+          <input formControlName="birthDate"
+                 type="date"
+                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 outline-none" />
         </div>
       </div>
 
-      <button
-        type="submit"
-        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-      >
+      <button type="submit"
+              class="w-full py-3 px-4 bg-gradient-to-r from-green-600 to-green-500 text-white rounded-lg font-medium shadow-lg hover:from-green-700 hover:to-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200">
         Register
       </button>
 
-      <div class="text-sm text-center">
-        <a
-          routerLink="/login"
-          class="font-medium text-green-600 hover:text-green-500"
-        >
+      <div class="text-center">
+        <a routerLink="/login"
+           class="text-sm font-medium text-green-600 hover:text-green-500 transition-colors duration-200">
           Already have an account? Sign in
         </a>
       </div>

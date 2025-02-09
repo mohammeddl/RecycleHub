@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PointsService } from '../../core/services/points.service';
-import {
-  UserPoints,
-  PointTransaction,
-  VoucherOption,
-} from '../../../app/core/models/points.model';
+import { UserPoints, PointTransaction, VoucherOption } from '../../../app/core/models/points.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-points-dashboard',
@@ -16,7 +13,7 @@ import {
 export class PointsDashboardComponent implements OnInit {
   userPoints!: UserPoints;
   pointsHistory: PointTransaction[] = [];
-  voucherOptions: VoucherOption[] = [];
+  voucherOptions: (VoucherOption & { brand: string; bgColor: string; logo: string })[] = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
   Math = Math;
 
@@ -30,25 +27,38 @@ export class PointsDashboardComponent implements OnInit {
   loadUserPoints() {
     if (this.currentUser && this.currentUser.id) {
       this.userPoints = this.pointsService.getUserPoints(this.currentUser.id);
-      this.pointsHistory = this.pointsService.getPointsHistory(
-        this.currentUser.id
-      );
+      this.pointsHistory = this.pointsService.getPointsHistory(this.currentUser.id);
     }
   }
 
-  redeemVoucher(points: number) {
-    if (
-      confirm(`Are you sure you want to redeem ${points} points for a voucher?`)
-    ) {
-      const success = this.pointsService.redeemVoucher(
-        this.currentUser.id,
-        points
-      );
+  async redeemVoucher(points: number) {
+    const result = await Swal.fire({
+      title: 'Redeem Points',
+      text: `Are you sure you want to redeem ${points} points for a voucher?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#10B981',
+      cancelButtonColor: '#EF4444',
+      confirmButtonText: 'Yes, redeem!'
+    });
+
+    if (result.isConfirmed) {
+      const success = this.pointsService.redeemVoucher(this.currentUser.id, points);
       if (success) {
-        alert('Voucher redeemed successfully!');
+        await Swal.fire({
+          title: 'Success!',
+          text: 'Your voucher has been redeemed successfully.',
+          icon: 'success',
+          confirmButtonColor: '#10B981'
+        });
         this.loadUserPoints();
       } else {
-        alert('Failed to redeem voucher. Please try again.');
+        await Swal.fire({
+          title: 'Error',
+          text: 'Failed to redeem voucher. Please try again.',
+          icon: 'error',
+          confirmButtonColor: '#EF4444'
+        });
       }
     }
   }
