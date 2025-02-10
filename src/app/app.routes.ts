@@ -10,9 +10,11 @@ import { AvailableRequestsComponent } from './features/collection/available-requ
 import { MyCollectionsComponent } from './features/collection/my-collections/my-collections.component';
 import { ManageCollectionComponent } from './features/collection/manage-collection/manage-collection.component';
 import { PointsDashboardComponent } from './features/points/points-dashboard.component';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
 
 
 export const routes: Routes = [
+  { path: 'home', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },

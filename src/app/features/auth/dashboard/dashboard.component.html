@@ -4,68 +4,52 @@
       <div class="flex justify-between h-16">
         <div class="flex">
           <div class="flex-shrink-0 flex items-center">
-            <span
-              class="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent"
-            >
+            <span class="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
               RecycleHub
             </span>
           </div>
           <div class="hidden sm:ml-8 sm:flex sm:space-x-8">
-            <a
-              routerLink="profile"
-              routerLinkActive="border-green-500 text-green-600"
-              class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600"
-            >
+            <a routerLink="profile"
+               routerLinkActive="border-green-500 text-green-600"
+               class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600">
               Profile
             </a>
 
             <ng-container *ngIf="currentUser?.role === 'individual'">
-              <a
-                routerLink="create-request"
-                routerLinkActive="border-green-500 text-green-600"
-                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600"
-              >
+              <a routerLink="create-request"
+                 routerLinkActive="border-green-500 text-green-600"
+                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600">
                 Create Request
               </a>
-              <a
-                routerLink="requests"
-                routerLinkActive="border-green-500 text-green-600"
-                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600"
-              >
+              <a routerLink="requests"
+                 routerLinkActive="border-green-500 text-green-600"
+                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600">
                 My Requests
               </a>
             </ng-container>
 
             <ng-container *ngIf="currentUser?.role === 'collector'">
-              <a
-                routerLink="available-requests"
-                routerLinkActive="border-green-500 text-green-600"
-                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600"
-              >
+              <a routerLink="available-requests"
+                 routerLinkActive="border-green-500 text-green-600"
+                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600">
                 Available Requests
               </a>
-              <a
-                routerLink="my-collections"
-                routerLinkActive="border-green-500 text-green-600"
-                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600"
-              >
+              <a routerLink="my-collections"
+                 routerLinkActive="border-green-500 text-green-600"
+                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600">
                 My Collections
               </a>
-              <a
-                routerLink="points"
-                routerLinkActive="border-green-500 text-green-600"
-                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600"
-              >
+              <a routerLink="points"
+                 routerLinkActive="border-green-500 text-green-600"
+                 class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium transition-colors duration-200 hover:text-green-600">
                 Points
               </a>
             </ng-container>
           </div>
         </div>
         <div class="flex items-center">
-          <button
-            (click)="logout()"
-            class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
-          >
+          <button (click)="logout()"
+                  class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200">
             Logout
           </button>
         </div>
