@@ -119,6 +119,6 @@ This project is part of an educational program and is distributed under the MIT 
 
 ## 📬 Contact
 
-Your Name - [@yourgithub](https://github.com/mohammeddl)
+Your Name - [@mohammeddl](https://github.com/mohammeddl)
 
 Project Link: [https://github.com/yourusername/recyclehub](https://github.com/mohammeddl/RecycleHub)
