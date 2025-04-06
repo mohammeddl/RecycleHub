@@ -22,6 +22,7 @@
     "@ngrx/store": "^19.0.0",
     "recycle-hub": "file:",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.16.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

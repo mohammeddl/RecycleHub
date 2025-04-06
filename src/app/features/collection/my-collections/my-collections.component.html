@@ -1,113 +1,130 @@
-<div class="space-y-6">
-    <div class="flex justify-between items-center">
-      <h2 class="text-2xl font-bold text-gray-900">My Collections</h2>
+<div class="h-screen bg-gradient-to-br from-green-50 to-blue-50 p-6">
+  <div class="h-full bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl p-6 overflow-hidden flex flex-col">
+    <!-- Header -->
+    <div class="mb-6">
+      <h2 class="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent">
+        My Collections
+      </h2>
     </div>
 
-    <!-- Filter -->
-    <div class="flex space-x-2">
-      <button
-        *ngFor="
-          let status of [
-            'all',
-            'accepted',
-            'in_progress',
-            'completed',
-            'rejected'
-          ]
-        "
-        (click)="filterByStatus(status)"
-        [class.bg-green-600]="currentFilter === status"
-        [class.text-white]="currentFilter === status"
-        [class.bg-gray-100]="currentFilter !== status"
-        class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-      >
+    <!-- Filter Section -->
+    <div class="flex space-x-2 overflow-x-auto pb-4 mb-6">
+      <button *ngFor="let status of ['all', 'accepted', 'in_progress', 'completed', 'rejected']"
+              (click)="filterByStatus(status)"
+              [class]="'px-6 py-2 rounded-xl text-sm font-medium transition-all duration-200 transform hover:-translate-y-0.5 ' + 
+                      (currentFilter === status ? 
+                      'bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg' : 
+                      'bg-gray-100 hover:bg-gray-200 text-gray-600')">
         {{ status | titlecase }}
       </button>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <div
-        *ngFor="let collection of filteredCollections"
-        class="bg-white rounded-lg shadow p-6 space-y-4"
-      >
-        <div class="flex justify-between items-start">
-          <div>
-            <span class="text-sm font-medium text-gray-500">Request ID</span>
-            <p class="text-gray-900">{{ collection.id }}</p>
+    <!-- Collections Grid -->
+    <div class="flex-1 overflow-y-auto pr-2">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Collection Card -->
+        <div *ngFor="let collection of filteredCollections"
+             class="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+          <!-- Card Header -->
+          <div class="p-4 border-b bg-gray-50">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span [ngSwitch]="collection.wasteType" class="text-xl">
+                  <span *ngSwitchCase="'plastic'">♻️</span>
+                  <span *ngSwitchCase="'paper'">📄</span>
+                  <span *ngSwitchCase="'glass'">🥃</span>
+                  <span *ngSwitchCase="'metal'">🔧</span>
+                </span>
+                <span class="font-medium text-gray-900">{{ collection.wasteType | titlecase }}</span>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-medium"
+                    [ngClass]="{
+                      'bg-blue-100 text-blue-800': collection.status === 'accepted',
+                      'bg-yellow-100 text-yellow-800': collection.status === 'in_progress',
+                      'bg-green-100 text-green-800': collection.status === 'completed',
+                      'bg-red-100 text-red-800': collection.status === 'rejected'
+                    }">
+                {{ collection.status | titlecase }}
+              </span>
+            </div>
           </div>
-          <span
-            class="px-2 py-1 text-xs font-medium rounded-full"
-            [ngClass]="{
-              'bg-blue-100 text-blue-800': collection.status === 'accepted',
-              'bg-yellow-100 text-yellow-800':
-                collection.status === 'in_progress',
-              'bg-green-100 text-green-800':
-                collection.status === 'completed',
-              'bg-red-100 text-red-800': collection.status === 'rejected'
-            }"
-          >
-            {{ collection.status | titlecase }}
-          </span>
-        </div>
 
-        <div class="space-y-2">
-          <div>
-            <span class="text-sm font-medium text-gray-500">Waste Type</span>
-            <p class="text-gray-900">{{ collection.wasteType }}</p>
-          </div>
-          <div>
-            <span class="text-sm font-medium text-gray-500"
-              >Estimated Quantity</span
-            >
-            <p class="text-gray-900">{{ collection.quantity }} kg</p>
-          </div>
-          <div *ngIf="collection.actualQuantity">
-            <span class="text-sm font-medium text-gray-500"
-              >Actual Quantity</span
-            >
-            <p class="text-gray-900">{{ collection.actualQuantity }} kg</p>
-          </div>
-          <div>
-            <span class="text-sm font-medium text-gray-500">Pickup Date</span>
-            <p class="text-gray-900">{{ collection.pickupDate | date }}</p>
-          </div>
-          <div>
-            <span class="text-sm font-medium text-gray-500">Address</span>
-            <p class="text-gray-900">{{ collection.pickupAddress }}</p>
-          </div>
-        </div>
+          <!-- Card Content -->
+          <div class="p-4 space-y-4">
+            <!-- Quantity Info -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-gray-50 p-3 rounded-lg">
+                <span class="text-xs font-medium text-gray-500">Estimated</span>
+                <p class="text-sm font-semibold text-gray-900">{{ collection.quantity }} kg</p>
+              </div>
+              <div *ngIf="collection.actualQuantity" class="bg-green-50 p-3 rounded-lg">
+                <span class="text-xs font-medium text-gray-500">Actual</span>
+                <p class="text-sm font-semibold text-green-600">{{ collection.actualQuantity }} kg</p>
+              </div>
+            </div>
 
-        <div class="pt-4 flex justify-end">
-          <ng-container [ngSwitch]="collection.status">
-            <button
-              *ngSwitchCase="'accepted'"
-              (click)="startCollection(collection)"
-              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-            >
-              Start Collection
-            </button>
-            <a
-              *ngSwitchCase="'in_progress'"
-              [routerLink]="['/dashboard/manage-collection', collection.id]"
-              class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
-            >
-              Manage Collection
-            </a>
-            <button
-              *ngSwitchCase="'completed'"
-              class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg cursor-default"
-            >
-              Completed
-            </button>
-          </ng-container>
+            <!-- Other Details -->
+            <div class="space-y-3">
+              <div class="flex items-start space-x-2">
+                <svg class="w-4 h-4 text-gray-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <span class="block text-xs font-medium text-gray-500">Pickup Date</span>
+                  <p class="text-sm text-gray-900">{{ collection.pickupDate | date }}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-2">
+                <svg class="w-4 h-4 text-gray-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <span class="block text-xs font-medium text-gray-500">Address</span>
+                  <p class="text-sm text-gray-900">{{ collection.pickupAddress }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Actions -->
+          <div class="p-4 bg-gray-50 border-t">
+            <ng-container [ngSwitch]="collection.status">
+              <button *ngSwitchCase="'accepted'"
+                      (click)="startCollection(collection)"
+                      class="w-full py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:-translate-y-0.5">
+                Start Collection
+              </button>
+              <a *ngSwitchCase="'in_progress'"
+                 [routerLink]="['/dashboard/manage-collection', collection.id]"
+                 class="block w-full py-2 text-center bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 transform hover:-translate-y-0.5">
+                Manage Collection
+              </a>
+              <div *ngSwitchCase="'completed'"
+                   class="flex items-center justify-center space-x-2 text-green-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="font-medium">Completed</span>
+              </div>
+            </ng-container>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div
-      *ngIf="filteredCollections.length === 0"
-      class="text-center py-12 bg-white rounded-lg"
-    >
-      <p class="text-gray-500">No collections found</p>
+      <!-- Empty State -->
+      <div *ngIf="filteredCollections.length === 0" 
+           class="flex flex-col items-center justify-center py-12">
+        <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+          <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900">No collections found</h3>
+        <p class="mt-1 text-sm text-gray-500">Try adjusting your filters</p>
+      </div>
     </div>
   </div>
+</div>

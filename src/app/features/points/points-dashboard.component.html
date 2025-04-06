@@ -1,87 +1,103 @@
-<div class="container mx-auto px-4 py-8">
-    <div class="grid gap-6 md:grid-cols-2">
-      <!-- Points Summary -->
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">My Points</h2>
-        <div class="text-4xl font-bold text-green-600 mb-6">
-          {{ userPoints?.totalPoints || 0 }} Points
+<div class="h-screen bg-gradient-to-br from-green-50 to-blue-50 p-6">
+  <div class="h-full grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Points Summary Card -->
+    <div class="bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl p-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent">
+          Your Eco Points
+        </h2>
+        <div class="mt-4 text-6xl font-bold bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
+          {{ userPoints.totalPoints || 0 }}
         </div>
+        <p class="text-gray-600 mt-2">Points Available</p>
+      </div>
 
-        <!-- Available Vouchers -->
-        <div class="space-y-4">
-          <h3 class="text-lg font-semibold text-gray-900">
-            Available Vouchers
-          </h3>
-          <div class="grid gap-4">
-            <div
-              *ngFor="let voucher of voucherOptions"
-              class="border rounded-lg p-4 flex justify-between items-center"
-            >
-              <div>
-                <p class="font-medium">{{ voucher.amount }} DH Voucher</p>
-                <p class="text-sm text-gray-500">
-                  {{ voucher.points }} points
-                </p>
+      <!-- Available Vouchers -->
+      <div class="space-y-6">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Redeem Your Points</h3>
+        <div class="grid gap-4">
+          <div *ngFor="let voucher of voucherOptions" 
+               class="group relative overflow-hidden bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 p-4 hover:shadow-lg transition-all duration-300">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <div [class]="'w-12 h-12 flex items-center justify-center rounded-lg ' + voucher.bgColor">
+                  <ng-container [ngSwitch]="voucher.logo">
+                    <svg *ngSwitchCase="'swoosh'" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.51-.257-2.021-.771-.51-.514-.769-1.179-.769-1.996 0-.857.255-1.719.764-2.584.51-.866 1.344-1.755 2.502-2.668.59-.463 1.457-1.025 2.604-1.685l-.239-.568c-.04-.167-.066-.31-.066-.431 0-.619.293-1.109.879-1.471.586-.361 1.293-.542 2.121-.542.963 0 2.037.278 3.225.834l7.007 2.664c.963.369 1.446.886 1.446 1.55 0 .492-.274.892-.823 1.201l-1.238.598z"/>
+                    </svg>
+                    <svg *ngSwitchCase="'stripes'" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M2.5 2L7 12 2.5 22M9.5 2L14 12 9.5 22M16.5 2L21 12 16.5 22"/>
+                    </svg>
+                    <svg *ngSwitchCase="'amazon'" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.42 14.29c-.22-.12-.43-.23-.64-.33l-.01-.01c-1.16-.56-2.33-.84-3.49-.84-1.16 0-2.33.28-3.49.84l-.01.01c-.21.1-.42.21-.64.33-.44.24-.88.48-1.32.71-.44.24-.88.47-1.32.71l-.01.01c-.21.1-.42.21-.64.33-.44.24-.88.48-1.32.71-.44.24-.88.47-1.32.71-1.16.56-2.33.84-3.49.84v2c1.66 0 3.33-.4 4.99-1.2l.01-.01c.21-.1.42-.21.64-.33.44-.24.88-.48 1.32-.71.44-.24.88-.47 1.32-.71l.01-.01c.21-.1.42-.21.64-.33.44-.24.88-.48 1.32-.71.44-.24.88-.47 1.32-.71 1.16-.56 2.33-.84 3.49-.84 1.16 0 2.33.28 3.49.84.44.24.88.47 1.32.71.44.23.88.47 1.32.71.22.12.43.23.64.33l.01.01c1.66.8 3.33 1.2 4.99 1.2v-2c-1.16 0-2.33-.28-3.49-.84-.44-.24-.88-.47-1.32-.71-.44-.23-.88-.47-1.32-.71z"/>
+                    </svg>
+                  </ng-container>
+                </div>
+                <div>
+                  <p class="font-semibold text-gray-900">{{voucher.brand}}</p>
+                  <p class="text-sm text-gray-500">{{voucher.points}} points = {{voucher.amount}} DH</p>
+                </div>
               </div>
-              <button
-                (click)="redeemVoucher(voucher.points)"
-                [disabled]="
-                  !userPoints || userPoints.totalPoints < voucher.points
-                "
-                class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
+              <button (click)="redeemVoucher(voucher.points)"
+                      [disabled]="!userPoints || userPoints.totalPoints < voucher.points"
+                      [class]="voucher.bgColor + ' px-4 py-2 text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200'">
                 Redeem
               </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Points History -->
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Points History</h2>
-        <div class="space-y-4">
-          <div
-            *ngFor="let transaction of pointsHistory"
-            class="border-b pb-4 last:border-b-0"
-          >
-            <div class="flex justify-between items-start">
-              <div>
-                <p class="font-medium">
-                  {{ transaction.type === 'earned' ? 'Earned' : 'Redeemed' }}
-                  {{ Math.abs(transaction.points) }} points
-                </p>
-                <p class="text-sm text-gray-500">
-                  {{ transaction.date | date }}
-                </p>
+    <!-- Points History -->
+    <div class="bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl p-8">
+      <h2 class="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent mb-6">
+        Points History
+      </h2>
+      
+      <div class="space-y-4 max-h-[calc(100vh-16rem)] overflow-y-auto pr-2">
+        <div *ngFor="let transaction of pointsHistory"
+             class="group bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all duration-300">
+          <div class="flex justify-between items-start">
+            <div class="flex items-center space-x-3">
+              <div [class]="'w-10 h-10 rounded-full flex items-center justify-center ' + 
+                           (transaction.type === 'earned' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600')">
+                <svg *ngIf="transaction.type === 'earned'" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                </svg>
+                <svg *ngIf="transaction.type === 'redeemed'" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
               </div>
-              <span
-                [class]="
-                  transaction.type === 'earned'
-                    ? 'text-green-600'
-                    : 'text-red-600'
-                "
-              >
-                {{ transaction.type === 'earned' ? '+' : '-'
-                }}{{ Math.abs(transaction.points) }}
-              </span>
+              <div>
+                <p class="font-medium text-gray-900">
+                  {{transaction.type === 'earned' ? 'Earned from recycling' : 'Redeemed for voucher'}}
+                </p>
+                <p class="text-sm text-gray-500">{{transaction.date | date}}</p>
+              </div>
             </div>
-            <p
-              *ngIf="transaction.voucherAmount"
-              class="text-sm text-gray-500 mt-1"
-            >
-              Redeemed for {{ transaction.voucherAmount }} DH voucher
-            </p>
+            <span [class]="'text-lg font-semibold ' + 
+                          (transaction.type === 'earned' ? 'text-green-600' : 'text-red-600')">
+              {{transaction.type === 'earned' ? '+' : '-'}}{{Math.abs(transaction.points)}}
+            </span>
           </div>
+          <div *ngIf="transaction.voucherAmount" class="mt-2 text-sm text-gray-500">
+            Redeemed for {{transaction.voucherAmount}} DH voucher
+          </div>
+        </div>
 
-          <!-- History -->
-          <div
-            *ngIf="!pointsHistory.length"
-            class="text-center py-4 text-gray-500"
-          >
-            No points history available
+        <!-- Empty State -->
+        <div *ngIf="!pointsHistory.length" class="text-center py-8">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
           </div>
+          <p class="text-gray-500">No points history available yet</p>
+          <p class="text-sm text-gray-400 mt-1">Start recycling to earn points!</p>
         </div>
       </div>
     </div>
   </div>
+</div>

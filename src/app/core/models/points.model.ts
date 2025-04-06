@@ -18,4 +18,7 @@ export interface UserPoints {
   export interface VoucherOption {
     points: number;
     amount: number;
+    brand: string;    
+    bgColor: string;  
+    logo: string;  
   }

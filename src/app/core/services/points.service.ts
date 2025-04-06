@@ -18,10 +18,28 @@ export class PointsService {
     metal: 5,
   };
 
-  private readonly VOUCHER_OPTIONS: VoucherOption[] = [
-    { points: 100, amount: 50 },
-    { points: 200, amount: 120 },
-    { points: 500, amount: 350 },
+  private readonly VOUCHER_OPTIONS: (VoucherOption & { brand: string; bgColor: string; logo: string })[] = [
+    { 
+      points: 100, 
+      amount: 50,
+      brand: 'Nike Store',
+      bgColor: 'bg-black',
+      logo: 'swoosh'
+    },
+    { 
+      points: 200, 
+      amount: 120,
+      brand: 'Adidas',
+      bgColor: 'bg-black',
+      logo: 'stripes'
+    },
+    { 
+      points: 500, 
+      amount: 350,
+      brand: 'Amazon Gift Card',
+      bgColor: 'bg-[#FF9900]',
+      logo: 'amazon'
+    }
   ];
 
   constructor() {}
@@ -117,7 +135,7 @@ export class PointsService {
     return true;
   }
 
-  getVoucherOptions(): VoucherOption[] {
+  getVoucherOptions(): (VoucherOption & { brand: string; bgColor: string; logo: string })[] {
     return this.VOUCHER_OPTIONS;
   }
 
