@@ -1,370 +1,366 @@
-<div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-
-  <nav
-    class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <div class="flex items-center">
-          <span
-            class="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent"
-          >
-            RecycleHub
-          </span>
+<div class="landing-container">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-circle">
+          <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
         </div>
-        <div class="flex items-center space-x-4">
-          <a routerLink="/login" class="text-gray-600 hover:text-gray-900"
-            >Login</a
-          >
-          <a
-            routerLink="/register"
-            class="px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-200"
-          >
-            Get Started
-          </a>
-        </div>
+        <span class="logo-text">RecycleHub</span>
       </div>
+      <div class="auth-buttons">
+        <a routerLink="/login" class="auth-button login-button">
+          <span>Login</span>
+        </a>
+        <a routerLink="/register" class="auth-button register-button">
+          <span>Register</span>
+          <svg class="auth-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+      <button class="mobile-menu-button">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <div class="pt-20 pb-16 text-center px-4">
-    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-      Recycle Smarter,
-      <span
-        class="bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent"
-      >
-        Earn Rewards
-      </span>
-    </h1>
-    <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-      Join RecycleHub and turn your recyclables into rewards. Connect with
-      certified collectors and make a difference for our planet.
-    </p>
-    <div class="flex justify-center space-x-4">
-      <a
-        routerLink="/register"
-        class="px-8 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-200 transform hover:-translate-y-0.5"
-      >
-        Start Recycling
+  <!-- 3D Hero Section -->
+  <div class="hero-section">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="tag-dot"></span>
+      <span>Eco-friendly platform</span>
+    </div>
+    
+    <div class="hero-headline">
+      <h1 class="hero-title">
+        <div class="title-wrapper">
+          <span class="title-line">Transform Waste</span>
+          <span class="title-line">Into <span class="title-highlight">Rewards</span></span>
+        </div>
+      </h1>
+    </div>
+    
+    <div class="hero-description-box">
+      <p class="hero-description">
+        Join RecycleHub and turn your recyclables into rewards. Connect with
+        certified collectors and make a positive impact on our planet.
+      </p>
+    </div>
+    
+    <div class="hero-actions">
+      <a routerLink="/register" class="action-button primary-action">
+        <span class="action-text">Start Recycling</span>
+        <div class="action-icon-circle">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div>
       </a>
-      <a
-        href="#how-it-works"
-        class="px-8 py-3 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:-translate-y-0.5"
-      >
-        Learn More
+      <a href="#how-it-works" class="action-button secondary-action">
+        <span class="action-text">Learn More</span>
       </a>
     </div>
   </div>
+  <div class="hero-3d-container">
+    <!-- 3D animation container -->
+    <div class="earth-container">
+      <div class="earth"></div>
+      <div class="orbit">
+        <div class="satellite"></div>
+      </div>
+    </div>
+    <div class="floating-elements">
+      <div class="floating-item bottle"></div>
+      <div class="floating-item paper"></div>
+      <div class="floating-item can"></div>
+    </div>
+  </div>
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+</div>
 
   <!-- Features Section -->
-  <div class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Feature 1 -->
-        <div class="text-center p-6">
-          <div
-            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
-          >
-            <svg
-              class="w-8 h-8 text-green-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Create Request</h3>
-          <p class="text-gray-600">
-            Submit your recycling request with details about your materials
-          </p>
+  <div class="features-section" id="how-it-works">
+    <h2 class="section-title" data-aos="fade-up">How It Works</h2>
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card green-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon create-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
         </div>
+        <h3 class="feature-title">Create Request</h3>
+        <p class="feature-description">
+          Submit your recycling request with details about your materials
+        </p>
+      </div>
 
-        <!-- Feature 2 -->
-        <div class="text-center p-6">
-          <div
-            class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
-          >
-            <svg
-              class="w-8 h-8 text-blue-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-              />
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Connect with Collectors</h3>
-          <p class="text-gray-600">
-            Get matched with certified collectors in your area
-          </p>
+      <!-- Feature 2 -->
+      <div class="feature-card blue-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon connect-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+          </svg>
         </div>
+        <h3 class="feature-title">Connect with Collectors</h3>
+        <p class="feature-description">
+          Get matched with certified collectors in your area
+        </p>
+      </div>
 
-        <!-- Feature 3 -->
-        <div class="text-center p-6">
-          <div
-            class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4"
-          >
-            <svg
-              class="w-8 h-8 text-yellow-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Earn Points</h3>
-          <p class="text-gray-600">Get rewards for your recycling efforts</p>
+      <!-- Feature 3 -->
+      <div class="feature-card amber-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-icon earn-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
         </div>
+        <h3 class="feature-title">Earn Points</h3>
+        <p class="feature-description">Get rewards for your recycling efforts</p>
       </div>
     </div>
   </div>
 
   <!-- Benefits Section -->
-  <div class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">
-        Why Choose RecycleHub?
-      </h2>
-      <div class="grid md:grid-cols-2 gap-12">
-        <!-- Left Column -->
-        <div class="space-y-8">
-          <div class="flex items-start space-x-4">
-            <div
-              class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-1">Convenient Pickup</h3>
-              <p class="text-gray-600">
-                Schedule pickups at your convenience with our network of
-                certified collectors
-              </p>
-            </div>
+  <div class="benefits-section">
+    <h2 class="section-title" data-aos="fade-up">Why Choose RecycleHub?</h2>
+    <div class="benefits-grid">
+      <!-- Left Column -->
+      <div class="benefits-column" data-aos="fade-right">
+        <div class="benefit-item">
+          <div class="benefit-icon pickup-icon">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
           </div>
-          <div class="flex items-start space-x-4">
-            <div
-              class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-1">Real-Time Tracking</h3>
-              <p class="text-gray-600">
-                Monitor your recycling requests and track their status in
-                real-time
-              </p>
-            </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Convenient Pickup</h3>
+            <p class="benefit-description">
+              Schedule pickups at your convenience with our network of
+              certified collectors
+            </p>
           </div>
         </div>
+        <div class="benefit-item">
+          <div class="benefit-icon tracking-icon">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Real-Time Tracking</h3>
+            <p class="benefit-description">
+              Monitor your recycling requests and track their status in
+              real-time
+            </p>
+          </div>
+        </div>
+      </div>
 
-        <!-- Right Column -->
-        <div class="space-y-8">
-          <div class="flex items-start space-x-4">
-            <div
-              class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-yellow-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-1">Reward Points</h3>
-              <p class="text-gray-600">
-                Earn points for every recycling request and redeem them for
-                rewards
-              </p>
-            </div>
+      <!-- Right Column -->
+      <div class="benefits-column" data-aos="fade-left">
+        <div class="benefit-item">
+          <div class="benefit-icon rewards-icon">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
-          <div class="flex items-start space-x-4">
-            <div
-              class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-purple-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-1">Environmental Impact</h3>
-              <p class="text-gray-600">
-                Track your contribution to environmental sustainability
-              </p>
-            </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Reward Points</h3>
+            <p class="benefit-description">
+              Earn points for every recycling request and redeem them for
+              rewards
+            </p>
           </div>
         </div>
+        <div class="benefit-item">
+          <div class="benefit-icon impact-icon">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Environmental Impact</h3>
+            <p class="benefit-description">
+              Track your contribution to environmental sustainability
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Section (New) -->
+  <div class="stats-section">
+    <h2 class="section-title" data-aos="fade-up">Our Impact</h2>
+    <div class="stats-container">
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat-icon users-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </div>
+        <div class="stat-number counter" data-target="5000">0</div>
+        <div class="stat-label">Active Users</div>
+      </div>
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-icon recycle-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </div>
+        <div class="stat-number counter" data-target="10000">0</div>
+        <div class="stat-label">Tons Recycled</div>
+      </div>
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+        <div class="stat-icon collectors-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+          </svg>
+        </div>
+        <div class="stat-number counter" data-target="500">0</div>
+        <div class="stat-label">Collectors</div>
+      </div>
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+        <div class="stat-icon cities-icon">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <div class="stat-number counter" data-target="25">0</div>
+        <div class="stat-label">Cities</div>
       </div>
     </div>
   </div>
 
   <!-- CTA Section -->
-  <div class="py-16 bg-gradient-to-r from-green-500 to-blue-500 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-6">Ready to Start Recycling?</h2>
-      <p class="text-xl mb-8 opacity-90">
+  <div class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title" data-aos="fade-up">Ready to Start Recycling?</h2>
+      <p class="cta-description" data-aos="fade-up" data-aos-delay="100">
         Join RecycleHub today and make a difference for our planet.
       </p>
-      <a
-        routerLink="/register"
-        class="inline-block px-8 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:-translate-y-0.5"
-      >
+      <a routerLink="/register" class="cta-button" data-aos="fade-up" data-aos-delay="200">
         Get Started Now
       </a>
+    </div>
+    <div class="particles-container">
+      <div class="particle p1"></div>
+      <div class="particle p2"></div>
+      <div class="particle p3"></div>
+      <div class="particle p4"></div>
+      <div class="particle p5"></div>
+      <div class="particle p6"></div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <span
-            class="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-500 bg-clip-text text-transparent"
-          >
-            RecycleHub
-          </span>
-          <p class="mt-2 text-gray-600">
-            Making recycling rewarding for everyone.
-          </p>
+  <footer class="footer">
+  <div class="footer-wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+    </svg>
+  </div>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <span class="footer-logo">RecycleHub</span>
+        <p class="footer-tagline">
+          Making recycling rewarding for everyone.
+        </p>
+        <div class="footer-badge">
+          <div class="badge-icon">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <div class="badge-text">Eco-Friendly Initiative</div>
         </div>
-        <div>
-          <h3 class="font-semibold mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">About Us</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900"
-                >How It Works</a
-              >
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Contact</a>
-            </li>
-          </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> About Us</a></li>
+          <li><a href="#how-it-works" class="footer-link"><span class="link-icon">→</span> How It Works</a></li>
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> Contact</a></li>
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-heading">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> Privacy Policy</a></li>
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> Terms of Service</a></li>
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> Cookie Policy</a></li>
+          <li><a href="#" class="footer-link"><span class="link-icon">→</span> Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-heading">Connect</h3>
+        <div class="social-links">
+          <a href="#" class="social-link facebook">
+            <span class="sr-only">Facebook</span>
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#" class="social-link instagram">
+            <span class="sr-only">Instagram</span>
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.64.25 1.176.585 1.71 1.12.536.536.87 1.071 1.12 1.71.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.903 4.903 0 01-1.12 1.71c-.536.536-1.071.87-1.71 1.12-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.903 4.903 0 01-1.71-1.12c-.536-.536-.87-1.071-1.12-1.71-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.903 4.903 0 011.12-1.71c.536-.536 1.071-.87 1.71-1.12.636-.247 1.363-.416 2.427-.465C9.456 2.013 9.81 2 12.24 2h.075z" clip-rule="evenodd" />
+              <path fill-rule="evenodd" d="M12 15a3 3 0 100-6 3 3 0 000 6zm0 2a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#" class="social-link twitter">
+            <span class="sr-only">Twitter</span>
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.278-.028-.556-.08-.83A7.72 7.72 0 0023 3z" />
+            </svg>
+          </a>
+          <a href="#" class="social-link linkedin">
+            <span class="sr-only">LinkedIn</span>
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
         </div>
-        <div>
-          <h3 class="font-semibold mb-4">Legal</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900"
-                >Privacy Policy</a
-              >
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900"
-                >Terms of Service</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-4">Connect</h3>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-gray-900">
-              <span class="sr-only">Facebook</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  fill-rule="evenodd"
-                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                  clip-rule="evenodd"
-                />
+        <div class="newsletter">
+          <h4 class="newsletter-title">Stay Updated</h4>
+          <p class="newsletter-text">Subscribe to our newsletter</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-button">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </a>
-
-            <a href="#" class="text-gray-400 hover:text-gray-900">
-              <span class="sr-only">Instagram</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  fill-rule="evenodd"
-                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.64.25 1.176.585 1.71 1.12.536.536.87 1.071 1.12 1.71.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.903 4.903 0 01-1.12 1.71c-.536.536-1.071.87-1.71 1.12-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.903 4.903 0 01-1.71-1.12c-.536-.536-.87-1.071-1.12-1.71-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.903 4.903 0 011.12-1.71c.536-.536 1.071-.87 1.71-1.12.636-.247 1.363-.416 2.427-.465C9.456 2.013 9.81 2 12.24 2h.075z"
-                  clip-rule="evenodd"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M12 15a3 3 0 100-6 3 3 0 000 6zm0 2a5 5 0 100-10 5 5 0 000 10z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-gray-900">
-              <span class="sr-only">Twitter</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.278-.028-.556-.08-.83A7.72 7.72 0 0023 3z"
-                />
-              </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>
-      <div class="mt-8 pt-8 border-t border-gray-100 text-center">
-        <p class="text-gray-500">
-          &copy; 2024 RecycleHub. All rights reserved.
-        </p>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2024 RecycleHub. All rights reserved.
+      </p>
+      <div class="footer-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 </div>
+

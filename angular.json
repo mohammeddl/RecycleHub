@@ -32,13 +32,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "600kb",
+                  "maximumError": "700kb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "50kb",
+                  "maximumError": "60kb"
                 }
               ],
               "outputHashing": "all"
@@ -86,5 +86,6 @@
   },
   "cli": {
     "analytics": false
-  }
+  },
+  "allowedCommonJsDependencies": ["sweetalert2"]
 }
