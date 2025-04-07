@@ -1,0 +1,11 @@
+services:
+  frontend:
+    build:
+      context: .
+    container_name: frontend-container
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - ENV_VAR_NAME=value

@@ -1,4 +1,4 @@
-<div class="h-screen bg-gradient-to-br from-green-50 to-blue-50 p-6">
+<div class="h-screen   p-6">
   <div class="h-full grid grid-cols-1 lg:grid-cols-2 gap-6">
     <!-- Points Summary Card -->
     <div class="bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl p-8">
@@ -17,7 +17,7 @@
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Redeem Your Points</h3>
         <div class="grid gap-4">
           <div *ngFor="let voucher of voucherOptions" 
-               class="group relative overflow-hidden bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 p-4 hover:shadow-lg transition-all duration-300">
+               class="group relative overflow-hidden  from-gray-50 to-white rounded-xl border border-gray-100 p-4 hover:shadow-lg transition-all duration-300">
             <div class="flex items-center justify-between">
               <div class="flex items-center space-x-4">
                 <div [class]="'w-12 h-12 flex items-center justify-center rounded-lg ' + voucher.bgColor">
@@ -57,7 +57,7 @@
       
       <div class="space-y-4 max-h-[calc(100vh-16rem)] overflow-y-auto pr-2">
         <div *ngFor="let transaction of pointsHistory"
-             class="group bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all duration-300">
+             class="group  from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all duration-300">
           <div class="flex justify-between items-start">
             <div class="flex items-center space-x-3">
               <div [class]="'w-10 h-10 rounded-full flex items-center justify-center ' + 
