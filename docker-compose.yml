@@ -2,10 +2,10 @@ services:
   frontend:
     build:
       context: .
-    container_name: frontend-container
+      dockerfile: Dockerfile.dev  
+    container_name: angular-dev
     ports:
-      - "8080:8080"
+      - "4200:4200"
     volumes:
       - .:/usr/src/app
-    environment:
-      - ENV_VAR_NAME=value
+      - /usr/src/app/node_modules
